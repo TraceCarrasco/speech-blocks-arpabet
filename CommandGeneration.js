@@ -7,7 +7,7 @@ CommandGeneration.prototype.GenerateGetCommands = function(block_types) {
     var commands = [];
     block_types.forEach(function (btype) {
         commands.push('get a ' + btype + ' block');
-    })
+    });
     return commands;
 }
 
@@ -49,4 +49,32 @@ CommandGeneration.prototype.GenerateChangeCommands = function(block_ids, value_s
 		});
 	});
 	return commands;
+}
+
+// Generates all DELETE commands
+// Args: block_ids: List of all block IDs that are presumed in the workspace
+// Returns: List of all valid DELETE commands
+CommandGeneration.prototype.GenerateDeleteCommands = function(block_ids) {
+	var commands = [];
+	block_ids.forEach(function(bid) { 
+		commands.push('delete block ' + bid);
+	});
+	return commands;
+}
+// Generates all possible commands give a list of block IDs, block types and field values
+// Args: block_ids: List of all block IDs that are presumed to be in the worspace
+//       block_types: List of all valid block types
+//       value_sets: List of all field value sets
+// Returns: The complete list of valid commands
+
+CommandGeneration.prototype.GenerateCommands = function(block_ids, block_types, value_sets) {
+	var commands = [];
+	commands.Extend(this.GenerateGetCommands(block_types));
+	commands.Extend(this.GenerateMoveCommands(block_ids));
+	commands.Extend(this.GenerateChangeCommands(block_ids, value_sets));
+	commands.Extend(this.GenerateDeleteCommands(block_ids));
+}	
+
+Array.prototype.Extend = function(e_list) {
+	element_list.forEach(function(e) { this.push(e)}, this);
 }
