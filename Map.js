@@ -1,4 +1,8 @@
 /**
+ * @author Trace Carrasco <tcarrasco@wisc.edu>
+ */
+
+/**
  * Creates a map that maps a specific key and data
  * @public
 **/

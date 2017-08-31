@@ -1,11 +1,15 @@
 /**
-* Creates object for finding the Levenstein Distance of 2 strings
-* @param {string, string} Two strings whose Levenstein Distance you want
-* @return {int}
-* @public
-*/
+ * @author Trace Carrasco <tcarrasco@wisc.edu>
+ */
+ 
 function LevensteinDistance() { }
 
+/**
+ * Computes the Levenstein editing distance str1 and str2
+ * @param str1 - The recognition
+ * @param str2 - the command
+ * @return the editing distance between the recognition and the command 
+ */
 LevensteinDistance.prototype.FindLevensteinDistance = function (str1, str2) {
     if (str1.length === 0)
         return str2.length;

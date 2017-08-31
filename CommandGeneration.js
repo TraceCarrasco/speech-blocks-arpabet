@@ -1,3 +1,7 @@
+/**
+ * @author Trace Carrasco <tcarrasco@wisc.edu>
+ */
+ 
 function CommandGeneration() { }
 
 // Generates all the GET commands
@@ -73,8 +77,9 @@ CommandGeneration.prototype.GenerateCommands = function(block_ids, block_types, 
 	commands.Extend(this.GenerateMoveCommands(block_ids));
 	commands.Extend(this.GenerateChangeCommands(block_ids, value_sets));
 	commands.Extend(this.GenerateDeleteCommands(block_ids));
+	return commands;
 }	
 
-Array.prototype.Extend = function(e_list) {
+Array.prototype.Extend = function(element_list) {
 	element_list.forEach(function(e) { this.push(e)}, this);
 }
